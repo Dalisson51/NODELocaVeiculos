@@ -1,7 +1,7 @@
-import { realizaLogin } from './login.js';
+import { realizaRegistro } from './registro.js';
 
-const btLogin = document.querySelector('form button');
-btLogin.addEventListener('click', (e) => {
+const btRegistrar = document.querySelector('form button');
+btRegistrar.addEventListener('click', (e) => {
     e.preventDefault();
-    realizaLogin();
+    realizaRegistro();
 });
