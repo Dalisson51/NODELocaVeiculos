@@ -19,7 +19,7 @@ function realizaRegistro() {
     fetch(`${urlBaseAPI}/user`, opcoes)
 
         .then((res) => {
-            console.log(res.json());
+            console.log(res);
             return res.json();
 
         })
