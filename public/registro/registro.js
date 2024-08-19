@@ -16,7 +16,7 @@ function realizaRegistro() {
 
     };
 
-    fetch(`${urlBaseAPI}/user`, opcoes)
+    /*fetch(`${urlBaseAPI}/user`, opcoes)
 
         .then((res) => {
 
@@ -37,7 +37,32 @@ function realizaRegistro() {
             }
 
         })
-
+*/
+    fetch(`${urlBaseAPI}/user`, opcoes)
+    .then((res) => {
+        if (!res.ok) {
+            throw new Error('Erro na requisição: ' + res.status);
+        }
+        return res.text(); // Pega o texto da resposta
+    })
+    .then((text) => {
+        if (text) {
+            return JSON.parse(text); // Converte o texto para JSON
+        } else {
+            throw new Error('Resposta vazia');
+        }
+    })
+    .then((json) => {
+        if (json.registrado) {
+            window.location = `${urlBaseFront}/index.html`;
+        } else {
+            alert(json.mensagem);
+        }
+    })
+    .catch((error) => {
+        console.error('Erro:', error);
+        alert('Erro ao processar o registro.');
+    });
 }
 
 
